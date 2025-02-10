@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>px100_pointing_controller_py</name>
+  <version>0.0.1</version>
+  <description>Controller to point to a target using mobile_px100 Interbotix arm</description>
+
+  <!-- Informations de mainteneur -->
+  <maintainer email="mreinert@bordeaux-inp.fr">mathis</maintainer>
+  <license>BSD</license>
+
+  <!-- Dépendances pour la construction et l'installation -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Dépendances nécessaires à l'exécution du package -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>interbotix_xs_modules</exec_depend>
+
+  <!-- Exportation pour un package Python -->
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
