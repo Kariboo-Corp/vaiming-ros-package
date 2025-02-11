@@ -59,7 +59,7 @@ The controller node allows you to specify a target pose for the robot's end-effe
 node.point_to_target(0.4, 0.4, 0.5, yaw=0.0)
 ```
 
-If this point is too far for the robot to reach, it is adjusted according to the maximum reach limit (`0.28 meters` in the code).
+If this point is too far for the robot to reThenach, it is adjusted according to the maximum reach limit (`0.28 meters` in the code).
 
 You can modify the target position by changing the values in the `point_to_target` method call:
 
@@ -68,6 +68,33 @@ node.point_to_target(-0.05, 0.10, 0.15, yaw=0.0)
 ```
 
 ---
+
+## Optional : Visualizing a Target Marker in RViz
+
+This package includes the ability to publish a marker at the target position in RViz.
+
+First, you have tu uncomment the 'Publisher for the target marker' parts in the pointing_controller.py file.
+Secondly, in another terminal 
+
+``` bash
+ros2 topic pub /visualization_marker_array visualization_msgs/msg/MarkerArray "
+markers:
+- header:
+    frame_id: 'mobile_px100/base_link'
+  ns: 'test_marker'
+  id: 0
+  type: 2  # Sphere
+  action: 0
+  pose:
+    position: {x: X, y: Y, z: Z}  # Replace with desired coordinates
+    orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  scale: {x: 0.3, y: 0.3, z: 0.3}  # Increase size for better visibility
+  color: {r: 0.0, g: 1.0, b: 0.0, a: 1.0}  # Green color for better contrast
+  lifetime: {sec: 0, nanosec: 0}"
+```
+
+Finally, in Rviz, ' Add -> By Topic -> /visualization_marker_array/MarkerArray '
+
 
 ## **Dependencies**
 
